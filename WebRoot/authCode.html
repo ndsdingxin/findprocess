@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div align="center">
+    <h3>获取临时授权码</h3>
+    <div style="margin-top: 150px;">
+        <a href="#" onclick="jumpAuthorizeFunction();"><button style='cursor:pointer;color:red;width:50px;height:50px;'>获取授权</button></a>
+    </div>
+
+</div>
+</body>
+<script type="text/javascript">
+
+    /**
+     * 跳转登录获取授权码
+     */
+    function jumpAuthorizeFunction() {
+
+        var $redirect_uri = getHostAndPort();
+        var client_id = ""; //创建应用后，分配应用的appSecret
+        var appKey = ""; //创建应用后，分配给应用的appKey
+        var response_type = "code"; //授权类型，此值固定为“code”
+        var redirect_uri = "https://open.jss.com.cn/"; //回调地址，如果为空，系统默认填写创建应用时的地址，否则为当前填写的redirect_uri
+        var authorize_url = "https://open.jss.com.cn/authorize"; //授权url
+
+        var _url = authorize_url + "?" + "client_id=" + client_id + "&"
+            + "appKey=" + appKey + "&"
+            + "response_type=" + response_type + "&"
+            + "redirect_uri=" + redirect_uri;
+
+        window.location.href = _url;
+    };
+
+    /**
+     * 获取主机地址
+     * @returns {string}
+     */
+    function getHostAndPort() {
+        return window.location.host + "/";
+    }
+</script>
+</html>
